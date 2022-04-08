@@ -12,18 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("weather")
 @CrossOrigin("http://localhost:3000")
-
+@RequestMapping("weather")
 public class WeatherController {
     private static Logger logger = LoggerFactory.getLogger(WeatherController.class);
     private WeatherService weatherService;
 
-    @Autowired
     public WeatherController(WeatherService weatherService){
         this.weatherService = weatherService;
     }
-
 
     @GetMapping("")
     public ResponseEntity<WeatherApiResponse> requestWeather(@RequestParam(name="lon", required = false) String lon,
